@@ -78,3 +78,15 @@ Nest is [MIT licensed](LICENSE).
 Personalizar errores y codigos de error
 
 buscar pokemon por mongoId, por numero o por nombre
+
+---
+
+Uso de modelos en diferentes módulos
+
+SEED para llenar la base de datos
+
+Paginación de resultados
+
+DTOs para Query parameters
+
+Transformaciones de DTOs

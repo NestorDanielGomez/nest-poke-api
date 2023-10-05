@@ -4,6 +4,7 @@ import { UpdatePokemonDto } from './dto/update-pokemon.dto';
 import { Model, isValidObjectId } from 'mongoose';
 import { Pokemon } from './entities/pokemon.entity';
 import { InjectModel } from '@nestjs/mongoose';
+import { PaginationDto } from '../common/dto/pagination.dto';
 
 
 @Injectable()
@@ -24,21 +25,27 @@ export class PokemonService {
     }
   }
 
-  findAll() {
-    return `This action returns all pokemon`;
+  findAll(paginationDto: PaginationDto) {
+    // si viene usa limit/offset si no viente toma 10 y 0
+    const { limit, offset = 0 } = paginationDto
+    return this.pokemonModel.find()
+      .limit(limit)
+      .skip(offset)
+      .sort({ no: 1 }) //ordeno por n0 ascente     
+      .select("-__v") //no traigo el __V que no lo necesito
   }
 
   async findOne(searchtype: string) {
 
     let pokemon: Pokemon;
 
-    // //por numero
+    //por numero
     if (!isNaN(+searchtype)) { pokemon = await this.pokemonModel.findOne({ no: searchtype }) }
 
     //por mongoID
     if (!pokemon && isValidObjectId(searchtype)) { pokemon = await this.pokemonModel.findById(searchtype) }
 
-    // //por nombre
+    //por nombre
     if (!pokemon) { pokemon = await this.pokemonModel.findOne({ name: searchtype.toLowerCase().trim() }) }
 
     if (!pokemon) { throw new NotFoundException(`pokemon con el id, nombre o no ${searchtype} no encontrado`) }
