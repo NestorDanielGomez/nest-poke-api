@@ -13,12 +13,13 @@ import { PaginationDto } from '../common/dto/pagination.dto';
 export class PokemonService {
 
   private defaultLimit: number
+
   constructor(
     @InjectModel(Pokemon.name)
     private readonly pokemonModel: Model<Pokemon>,
-    private readonly configService: ConfigService
+    private readonly configService: ConfigService,
   ) {
-    this.defaultLimit = configService.get<number>('default_limit')
+    this.defaultLimit = this.configService.get<number>('default_limit')
   }
 
   async create(createPokemonDto: CreatePokemonDto) {
