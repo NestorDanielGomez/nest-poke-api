@@ -90,3 +90,21 @@ Paginación de resultados
 DTOs para Query parameters
 
 Transformaciones de DTOs
+
+---------Dockerizacion
+
+Mongo Atlas
+
+Env file
+
+joi
+
+Validation Schemas
+
+Configuration Module
+
+Recomendaciones para un Readme útil
+
+Despliegues
+
+Dockerfile
