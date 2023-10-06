@@ -5,35 +5,43 @@
 ## Ejecutar en desarrollo
 
 1. Clonar repositorio
-2. ejecutar
-3. ```
+2. Ejecutar
+3. ```bash
    npm install
-
    ```
-
 4. Tener Nest CLI instalado
 
-   ```
+   ```bash
    npm i -g @nestjs/cli
-
    ```
 
 5. Levantar la base de datos
 
-   ```
+   ```bash
    docker compose up -d
-
    ```
 
-6.
+6. Clonar el archivo `.env.template` y renombrar por `.env`
+7. Completar las variables de entorno en el archivo`.env`
+8. ```bash
+   npm run start:dev
+   ```
+9. Reconstruir la BD con la semilla (seed)
+
+```
+  http://localhost:3000/api/seed
+```
+
+docker compose up -d
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+<!--
 ## Installation
 
 ```bash
 $ npm install
-```
+````
 
 ## Running the app
 
@@ -107,4 +115,4 @@ Recomendaciones para un Readme útil
 
 Despliegues
 
-Dockerfile
+Dockerfile -->
