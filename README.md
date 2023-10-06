@@ -2,7 +2,7 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
 
-## Ejecutar en desarrollo
+## Ejecutar en modo desarrollo
 
 1. Clonar repositorio
 2. Ejecutar
@@ -32,87 +32,38 @@
   http://localhost:3000/api/seed
 ```
 
-docker compose up -d
+## Generar Build de producción
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-<!--
-## Installation
-
-```bash
-$ npm install
-````
-
-## Running the app
+1. Crear el archivo `.env.prod`
+2. Cargar las variables de entorno de produccióm.
+3. Construir la nueva imagen
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+  docker-compose -f docker-compose.prod.yaml --env-file .env.prod up --build
 ```
 
-## Test
+## Aplicacion desplegada
 
-```bash
-# unit tests
-$ npm run test
+https://nestpokeapi.onrender.com/api/pokemon
 
-# e2e tests
-$ npm run test:e2e
+- La Base de datos se desplego en Mongo Atlas
 
-# test coverage
-$ npm run test:cov
-```
+## Stack Utilizado
 
-## Support
+- NestJS
+- MongoDb
+- Docker
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## Algunas Caracteristicas:
 
-## Stay in touch
+- Personalización de errores y códigos de error.
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- Busqueda de pokemones por mongoId | numero | nombre.
 
-## License
+- Uso de modelos en diferentes módulos.
 
-Nest is [MIT licensed](LICENSE).
+- Paginación de resultados (query params: limit + offset).
 
-Personalizar errores y codigos de error
+- DTOs para Query parameters.
 
-buscar pokemon por mongoId, por numero o por nombre
-
----
-
-Uso de modelos en diferentes módulos
-
-SEED para llenar la base de datos
-
-Paginación de resultados
-
-DTOs para Query parameters
-
-Transformaciones de DTOs
-
----------Dockerizacion
-
-Mongo Atlas
-
-Env file
-
-joi
-
-Validation Schemas
-
-Configuration Module
-
-Recomendaciones para un Readme útil
-
-Despliegues
-
-Dockerfile -->
+- Dockerizar la aplicación.
